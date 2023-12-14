@@ -1,3 +1,7 @@
+from typing import List
+
+from sqlalchemy import select
+
 from app.core.db import AsyncSessionLocal
 from app.models.logs import Log
 from app.schemas.logs import LogCreateRequest
@@ -26,3 +30,10 @@ async def create_logs(
 
         await session.refresh(log)
     return log
+
+
+async def get_all_logs() -> List[Log]:
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(select(Log))
+        logs_list = result.scalars().all()
+    return logs_list
