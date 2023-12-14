@@ -19,14 +19,10 @@ async def create_logs(
 
     async with AsyncSessionLocal() as session:
         # Добавляем созданный объект в сессию.
-        # Никакие действия с базой пока ещё не выполняются.
         session.add(log)
 
         # Записываем изменения непосредственно в БД.
-        # Так как сессия асинхронная, используем ключевое слово await.
         await session.commit()
 
-        # Обновляем объект db_room: считываем данные из БД, чтобы получить его id.
         await session.refresh(log)
-    # Возвращаем только что созданный объект класса MeetingRoom.
     return log

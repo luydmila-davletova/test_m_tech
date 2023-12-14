@@ -1,7 +1,5 @@
 from pydantic import BaseSettings
 
-# DATABASE_URL = "postgresql://user:password@localhost/dbname"
-
 
 class Settings(BaseSettings):
     app_title: str = 'web app'
