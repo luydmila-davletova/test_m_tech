@@ -1,10 +1,20 @@
+import re
 from datetime import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
 
 class LogCreateRequest(BaseModel):
     log: str
+
+    @validator('log')
+    def validate_log_format(cls, v):
+        # Регулярное выражение должно быть соответствующее вашему формату лога,
+        # например: r"(\d+\.\d+\.\d+\.\d+) (\w+) (/.*) (\d+)"
+        pattern = re.compile(r"(\S+) (\S+) (\S+) (\d+)")
+        if not pattern.fullmatch(v):
+            raise ValueError("Некорректный формат лога")
+        return v
 
 
 class LogResponse(BaseModel):

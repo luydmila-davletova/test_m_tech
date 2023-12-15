@@ -1,6 +1,6 @@
 from http.client import HTTPException
 
-from fastapi import APIRouter
+from fastapi import APIRouter, requests
 
 from app.crud.logs import create_logs, get_all_logs
 from app.schemas.logs import LogCreateRequest

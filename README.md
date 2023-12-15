@@ -33,7 +33,7 @@ alembic upgrade head
 ```
 * Наполнение env-файла.
 ```
-DATABASE_URL= База (sqlite+aiosqlite:///./fastapi.db)
+DATABASE_URL= sqlite+aiosqlite:///./fastapi.db
 ```
 * Стандартный запуск:
 ```
