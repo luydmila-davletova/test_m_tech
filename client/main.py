@@ -43,7 +43,7 @@ def send_log_entry(log_entry):
 
 
 async def write_log_entry(log_entry: str):
-    log_file_path = 'logs/server_logs.txt'
+    log_file_path = 'client/logs/server_logs.txt'
     os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
     async with aiofiles.open(log_file_path, mode='a') as log_file:
         await log_file.write(log_entry)
