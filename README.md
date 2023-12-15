@@ -34,6 +34,8 @@ alembic upgrade head
 * Наполнение env-файла.
 ```
 DATABASE_URL= sqlite+aiosqlite:///./fastapi.db
+LOG_GENERATOR_N = {любое число}
+LOG_GENERATOR_M = {любое число}
 ```
 * Стандартный запуск:
 ```
