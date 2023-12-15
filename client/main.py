@@ -38,7 +38,7 @@ def generate_log_entry():
 
 
 def send_log_entry(log_entry):
-    url = 'http://127.0.0.1:8001/api/data/'
+    url = 'http://127.0.0.1:8000/api/data/'
     requests.post(url, json={'log': log_entry})
 
 
@@ -59,4 +59,4 @@ async def generate_logs(background_tasks: BackgroundTasks):
         background_tasks.add_task(write_log_entry, log_entry)
         await asyncio.sleep(random.randint(0, m) / 1000)
 
-    return {"message": f"Generated {n} log entries."}
+    return {"message": f"Сгенерировано логов: {n}."}
