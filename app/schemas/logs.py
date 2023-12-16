@@ -12,6 +12,7 @@ class LogCreateRequest(BaseModel):
         pattern = re.compile(r"(\S+) (\S+) (\S+) (\d+)")
         if not pattern.fullmatch(v):
             raise ValueError("Некорректный формат лога")
+
         return v
 
 

@@ -10,11 +10,12 @@ from app.schemas.logs import LogCreateRequest
 async def create_logs(
         new_log: LogCreateRequest
 ) -> Log:
+    """Функция для создания логов"""
     try:
         log_data = new_log.log.split(" ")
         if len(log_data) != 4:
             raise ValueError(
-                "Лог должен содержать ровно 4 элемента: IP адрес, HTTP метод, URI, код статуса"
+                "Лог должен содержать 4 элемента: IP, HTTP, URI, код статуса!"
             )
 
         ip_address, http_method, uri, status_code = log_data
@@ -30,13 +31,15 @@ async def create_logs(
             await session.commit()
             await session.refresh(log)
         return log
-    except ValueError as e:
-        print(f"Ошибка валидации: {e}")
-        raise e
+    except ValueError as error:
+        print(f"Ошибка валидации: {error}")
+        raise error
 
 
 async def get_all_logs() -> List[Log]:
+    """Функция для получения всех логов"""
     async with AsyncSessionLocal() as session:
         result = await session.execute(select(Log))
         logs_list = result.scalars().all()
+
     return logs_list

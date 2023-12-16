@@ -1,11 +1,10 @@
 import asyncio
 import os
 import random
-import requests
 
 import aiofiles
-from fastapi import FastAPI
-from fastapi import BackgroundTasks
+import requests
+from fastapi import BackgroundTasks, FastAPI
 
 app = FastAPI()
 
